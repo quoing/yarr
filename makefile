@@ -18,7 +18,7 @@ build_macos:
 
 build_linux:
 	mkdir -p _output/linux
-	GOOS=linux GOARCH=amd64 go build -tags "sqlite_foreign_keys linux" -ldflags="$(GO_LDFLAGS)" -o _output/linux/yarr ./cmd/yarr
+	GOOS=linux GOARCH=$(TARGETARCH) go build -tags "sqlite_foreign_keys linux" -ldflags="$(GO_LDFLAGS)" -o _output/linux/yarr ./cmd/yarr
 
 build_windows:
 	mkdir -p _output/windows
