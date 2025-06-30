@@ -42,6 +42,10 @@ darwin_arm64:
 	# cross-compilation not supported: CC="zig cc -target aarch64-macos-none"
 	GOOS=darwin GOARCH=arm64 go build $(GO_FLAGS) -o out/$@/yarr ./cmd/yarr
 
+linux_multiarch64:
+	CC="zig cc -O2 -g0" CGO_CFLAGS="-D_LARGEFILE64_SOURCE" GOOS=linux GOARCH=${TARGETARCH} \
+	go build $(GO_FLAGS) -o out/$@/yarr ./cmd/yarr
+
 linux_amd64:
 	CC="zig cc -target x86_64-linux-musl -O2 -g0" CGO_CFLAGS="-D_LARGEFILE64_SOURCE" GOOS=linux GOARCH=amd64 \
 	go build $(GO_FLAGS) -o out/$@/yarr ./cmd/yarr
